@@ -1,5 +1,6 @@
-import React from 'react'; 
-import ReactDOM from 'react-dom'; 
-import Board from './Board'; 
 
-ReactDOM.render ( <Board />, document.getElementById('trello-board')); 
+import React 	from 'react'; 
+import ReactDOM from 'react-dom';
+import Board 	from './Board'; 
+
+ReactDOM.render(<Board />, document.getElementById('trello-board'));

@@ -1,35 +1,35 @@
 
-import React from 'react'; 
-import List from './List';
+import React 	from 'react';
+import List 	from './List';
 
 class Board extends React.Component {
-	constructor (props) {
-		super(props);
+	constructor(props){
+		super(props); 
 
-		this.state = { 
+		this.state = {
 			lists: [
 				{'id': 1, 'name': 'Lista 1'}
-			] 
+			]
 		}
 	}
 
-	renderList(list) {
-		return (
-			<List key={list.id} id={list.id}>
-				{ list.props } 
-			</List>
+	renderList(list){
+		return(
+			<List key={ list.id } id={ list.id } name={ list.name }></List>
 		)
 	}
 
-	render () {
+	render(){
 		return (
-			<div className="container">
-				<div className="row">
-					{ this.state.lists.map( this.renderList )}
+			<div className="board">
+				<div className="container">
+					<div className="row">
+						{ this.state.lists.map( this.renderList )}
+					</div>
 				</div>
 			</div>
 		)
 	}
 }
 
-export default Board; 
+export default Board;
