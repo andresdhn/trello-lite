@@ -3,35 +3,67 @@ import React 	from 'react';
 
 class List extends React.Component {
 	constructor(props){
-		super(props);
+		super(props)
 
 		this.state = {
-			todos: [
-				{'id': 1, 'name': 'Primer todo'}
-			]
+			'editing': false
+		}
+
+		this.edit = this.edit.bind(this)
+		this.update = this.update.bind(this)
+	}
+
+	edit() {
+		this.setState({ 'editing': true })
+	}
+
+	update() {
+		this.props.onSave( this.refs.listname.value, this.props.id )
+		this.setState({ 'editing': false })
+	}
+
+	componentDidUpdate() {
+		if (this.state.editing ) {
+			this.refs.listname.focus()
+			this.refs.listname.select()
 		}
 	}
 
-	renderTodo(todo){
-		return (
-			<div key={ todo.id } id={ todo.id }>
-				{ todo.name }
+	renderDisplay() {
+		return(
+			<div className="col-3">
+				<div className="card bg-light">
+					<div className="card-body">
+						<button type="button" 
+							className="btn btn-light font-weight-bold"
+							onClick={ this.edit } >
+							{ this.props.name }
+						</button>
+					</div>
+				</div>
 			</div>
+		)
+	}
+
+	renderForm() {
+		return (
+			<div className="col-3">
+				<div className="card bg-light">
+					<div className="card-body">
+						<input type="text" 
+							className="form-control" 
+							ref="listname" 
+							defaultValue="..." 
+							onBlur={ this.update } />
+					</div>
+  				</div>
+  			</div>
 		)
 	}
 
 	render(){
 		return (
-			<div className="col-3">
-				<div className="card bg-light">
-					<div className="card-header">
-						<p className="font-weight-bold">{this.props.name}</p>
-					</div>
-					<div className="card-body">
-						{ this.state.todos.map( this.renderTodo )}
-					</div>	
-				</div>
-			</div>
+			(this.state.editing) ? this.renderForm() : this.renderDisplay()
 		)
 	}
 }

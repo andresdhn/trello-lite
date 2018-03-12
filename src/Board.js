@@ -4,31 +4,37 @@ import List 	from './List';
 
 class Board extends React.Component {
 	constructor(props){
-		super(props); 
+		super(props)
 
 		this.state = {
-			lists: [
-				{'id': 1, 'name': 'Lista 1'}
+			'lists': [
+				{'id': 0, 'name':'...'}
 			]
 		}
 
-		this.addList = this.addList.bind(this);
+		this.addList = this.addList.bind(this)
+		this.save = this.save.bind(this)
 	}
 
 	nextId() {
-		return this.state.lists.length + 1
+		let newId = this.state.lists.length;
+        return  newId++;
 	}
 
 	addList() {
 		let newList = this.state.lists; 
-		newList.push( { 'id': this.nextid, 'name':'' } ); 
+		newList.push( { 'id': this.nextId(), 'name':'...', 'editing': true } ); 
 		this.setState ( newList );
 
 	}
 
+	save(newName, id) {
+		let lists = this.state.lists.map( list => (list.id !== id) ? list : { 'id': id, 'name': newName }); 
+	}
+
 	renderList(list){
 		return(
-			<List key={ list.id } id={ list.id } name={ list.name } ></List>
+			<List key={ list.id } id={ list.id } name={ list.name } onSave={ this.save }></List>
 		)
 	}
 
