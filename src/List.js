@@ -22,10 +22,10 @@ class List extends React.Component {
 
 	render(){
 		return (
-			<div className="col-md-4">
-				<div className="card">
-					<div class="card-header">
-						{this.props.name}
+			<div className="col-3">
+				<div className="card bg-light">
+					<div className="card-header">
+						<p className="font-weight-bold">{this.props.name}</p>
 					</div>
 					<div className="card-body">
 						{ this.state.todos.map( this.renderTodo )}
