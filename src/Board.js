@@ -28,8 +28,8 @@ class Board extends React.Component {
 	}
 
 	save(newName, id) {
-		// let lists = this.state.lists.map( list => (list.id !== id) ? list : { 'id': id, 'name': newName }); 
-		console.log(newName);
+		let lists = this.state.lists.map( list => (list.id !== id) ? list : { 'id': id, 'name': newName }); 
+		this.setState({ lists });
 	}
 
 	renderList(list){
