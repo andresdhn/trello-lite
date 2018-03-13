@@ -31,7 +31,7 @@ class List extends React.Component {
 
 	renderDisplay() {
 		return(
-			<div className="col-3">
+			<div className="col">
 				<div className="card bg-light">
 					<div className="card-body">
 						<button type="button" 
@@ -47,7 +47,7 @@ class List extends React.Component {
 
 	renderForm() {
 		return (
-			<div className="col-3">
+			<div className="col">
 				<div className="card bg-light">
 					<div className="card-body">
 						<input type="text" 
