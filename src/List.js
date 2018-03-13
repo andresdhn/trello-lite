@@ -10,15 +10,15 @@ class List extends React.Component {
 		}
 
 		this.edit = this.edit.bind(this)
-		this.update = this.update.bind(this)
+		this.change = this.change.bind(this)		
 	}
 
 	edit() {
 		this.setState({ 'editing': true })
 	}
 
-	update() {
-		this.props.onSave( this.refs.listname.value, this.props.id )
+	change() {
+		this.props.save( this.refs.listname.value, this.props.id )
 		this.setState({ 'editing': false })
 	}
 
@@ -54,7 +54,7 @@ class List extends React.Component {
 							className="form-control" 
 							ref="listname" 
 							defaultValue="..." 
-							onBlur={ this.update } />
+							onBlur={ this.change } />
 					</div>
   				</div>
   			</div>

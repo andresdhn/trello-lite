@@ -13,7 +13,6 @@ class Board extends React.Component {
 		}
 
 		this.addList = this.addList.bind(this)
-		this.save = this.save.bind(this)
 	}
 
 	nextId() {
@@ -29,12 +28,15 @@ class Board extends React.Component {
 	}
 
 	save(newName, id) {
-		let lists = this.state.lists.map( list => (list.id !== id) ? list : { 'id': id, 'name': newName }); 
+		// let lists = this.state.lists.map( list => (list.id !== id) ? list : { 'id': id, 'name': newName }); 
+		console.log(newName);
 	}
 
 	renderList(list){
+		
 		return(
-			<List key={ list.id } id={ list.id } name={ list.name } onSave={ this.save }></List>
+
+			<List key={ list.id } id={ list.id } name={ list.name } save={ this.save.bind(this) }></List>
 		)
 	}
 
@@ -43,7 +45,7 @@ class Board extends React.Component {
 			<div className="board">
 				<div className="container-fluid">
 					<div className="row">
-						{ this.state.lists.map( this.renderList )}
+						{ this.state.lists.map( this.renderList , this)}
 
 						<button type="button" className="btn btn-light" onClick={ this.addList }>Add list</button>
 					</div>
