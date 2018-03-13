@@ -47,7 +47,7 @@ class Board extends React.Component {
 					<div className="row">
 						{ this.state.lists.map( this.renderList , this)}
 
-						<button type="button" className="btn btn-light" onClick={ this.addList }>Add list</button>
+						<button type="button" className="btn btn-outline-light" onClick={ this.addList }>Add list</button>
 					</div>
 				</div>
 			</div>
