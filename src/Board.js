@@ -33,9 +33,7 @@ class Board extends React.Component {
 	}
 
 	renderList(list){
-		
 		return(
-
 			<List key={ list.id } id={ list.id } name={ list.name } save={ this.save.bind(this) }></List>
 		)
 	}
@@ -47,7 +45,9 @@ class Board extends React.Component {
 					<div className="row">
 						{ this.state.lists.map( this.renderList , this)}
 
-						<button type="button" className="btn btn-outline-light" onClick={ this.addList }>Add list</button>
+						<div className="col-2">
+							<button type="button" className="btn btn-outline-light btn-block" onClick={ this.addList }>Add list</button>
+						</div>
 					</div>
 				</div>
 			</div>

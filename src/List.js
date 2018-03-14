@@ -7,14 +7,9 @@ class List extends React.Component {
 		super(props)
 
 		this.state = {
-			'editing': false, 
+			'editing': false,
+			'named' : false,
 			'todos': [
-				{'id': 0, 'name': 'todo1'},
-				{'id': 1, 'name': 'todo2'},
-				{'id': 2, 'name': 'todo3'},
-				{'id': 3, 'name': 'todo4'},
-				{'id': 4, 'name': 'todo5'},
-				{'id': 5, 'name': 'todo6'},
 			]
 		}
 
@@ -28,7 +23,7 @@ class List extends React.Component {
 
 	change() {
 		this.props.save( this.refs.listname.value, this.props.id )
-		this.setState({ 'editing': false })
+		this.setState({ 'editing': false, 'named': true })
 	}
 
 	componentDidUpdate() {
@@ -49,10 +44,12 @@ class List extends React.Component {
 							{ this.props.name }
 						</button>
 					</div>
-					<div className="card-text">
+					<div className="card-body">
 						<div className="list-group">
 							{ this.state.todos.map( this.renderTodos, this ) }
 						</div>
+
+						{ (this.state.named) ? <button type="button" className="btn btn-light font-weight-bold" onClick={ this.addTodo }>...</button> : '' }
 					</div>
 				</div>
 			</div>
