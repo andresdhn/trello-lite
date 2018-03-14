@@ -22,8 +22,11 @@ class List extends React.Component {
 	}
 
 	change() {
-		this.props.save( this.refs.listname.value, this.props.id )
-		this.setState({ 'editing': false, 'named': true })
+		if (this.refs.listname.value !== this.props.name ){
+			this.props.save( this.refs.listname.value, this.props.id )
+			this.setState({ 'named': true })
+		}
+		this.setState({ 'editing': false })
 	}
 
 	componentDidUpdate() {
