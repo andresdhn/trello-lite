@@ -10,6 +10,8 @@ class List extends React.Component {
 			'editing': false,
 			'named' : false,
 			'todos': [
+				{ 'id': 0, 'text': 'do laundry' },
+				{ 'id': 1, 'text': 'Walk the dog' }
 			]
 		}
 
@@ -52,7 +54,7 @@ class List extends React.Component {
 							{ this.state.todos.map( this.renderTodos, this ) }
 						</div>
 
-						{ (this.state.named) ? <button type="button" className="btn btn-light font-weight-bold" onClick={ this.addTodo }>...</button> : '' }
+						{ (this.state.named) ? <button type="button" className="btn btn-outline-dark font-weight-bold" onClick={ this.addTodo }>...</button> : '' }
 					</div>
 				</div>
 			</div>
@@ -77,7 +79,7 @@ class List extends React.Component {
 
 	renderTodos(todo) {
 		return (
-			<Todo key={ todo.id } id={ todo.id }> { todo.name }</Todo>
+			<Todo key={ todo.id } id={ todo.id }> { todo.text }</Todo>
 		)
 	}
 
