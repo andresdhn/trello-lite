@@ -34,7 +34,7 @@ class Board extends React.Component {
 
 	renderList(list){
 		return(
-			<List key={ list.id } id={ list.id } name={ list.name } save={ this.save.bind(this) }></List>
+			<List key={ list.id } id={ list.id } name={ list.name } onSave={ this.save.bind(this) }></List>
 		)
 	}
 
