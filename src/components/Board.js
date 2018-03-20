@@ -15,14 +15,13 @@ class Board extends React.Component {
 
 	nextId() {
 		let newId = this.state.lists.length;
-        return  newId++;
+        return newId++;
 	}
 
 	addList() {
 		let newList = this.state.lists; 
 		newList.push( { 'id': this.nextId(), 'name':'...', 'editing': true } ); 
 		this.setState ( newList );
-
 	}
 
 	save(newName, id) {

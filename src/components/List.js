@@ -14,17 +14,28 @@ class List extends React.Component {
 		}
 	}
 
+	nextId() {
+		let newId = this.state.todos.length
+		return newId++
+	}
+
+	addTodo() {
+		let newTodo = this.state.todos
+		newTodo.push({ 'id': this.nextId(), 'name': '...', 'completed': false })
+		this.setState({ newTodo })
+	}
+
 	renderAddTodoBtn() {
 		return(
 			<div className="card-footer">
-				<button type="button" className="btn btn-outline-dark font-weight-bold" onClick={ this.addTodo }>...</button>
+				<button type="button" className="btn btn-outline-dark font-weight-bold" onClick={ this.addTodo.bind(this) }>...</button>
 			</div>
 		)
 	}
 	
 	renderTodos(todo) {
 		return (
-			<Todo key={ todo.id } id={ todo.id }>{ todo.text }</Todo>
+			<Todo key={ todo.id } id={ todo.id }>{ todo.name }</Todo>
 		)
 	}
 
