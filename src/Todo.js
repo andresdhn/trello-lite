@@ -10,10 +10,10 @@ class Todo extends React.Component {
 		return(
 			// (this.state.editing) ? this.renderForm() : this.renderDisplay()
 
-			<button type="button" 
+			<a href="#" 
 				className="list-group-item list-group-item-action">
 				{ this.props.children }
-			</button>
+			</a>
 		) 
 	}
 }
