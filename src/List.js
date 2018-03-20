@@ -10,8 +10,6 @@ class List extends React.Component {
 			'editing': false,
 			'named' : false,
 			'todos': [
-				{ 'id': 0, 'text': 'do laundry' },
-				{ 'id': 1, 'text': 'Walk the dog' }
 			]
 		}
 
@@ -41,21 +39,21 @@ class List extends React.Component {
 	renderDisplay() {
 		return(
 			<div className="col">
-				<div className="card bg-light">
-					<div className="card-body">
+				<div className="card">
+					<div className="card-header">
 						<button type="button" 
 							className="btn btn-light font-weight-bold"
 							onClick={ this.edit } >
 							{ this.props.name }
 						</button>
 					</div>
-					<div className="card-body">
-						<div className="list-group">
-							{ this.state.todos.map( this.renderTodos, this ) }
-						</div>
-
-						{ (this.state.named) ? <button type="button" className="btn btn-outline-dark font-weight-bold" onClick={ this.addTodo }>...</button> : '' }
+					
+					<div className="list-group">
+						{ this.state.todos.map( this.renderTodos, this ) }
 					</div>
+				
+					{ (this.state.named) ? this.renderButton() : '' }
+					
 				</div>
 			</div>
 		)
@@ -77,6 +75,13 @@ class List extends React.Component {
 		)
 	}
 
+	renderButton() {
+		return(
+			<div className="card-footer">
+				<button type="button" className="btn btn-outline-dark font-weight-bold" onClick={ this.addTodo }>...</button>
+			</div>
+		)
+	}
 	renderTodos(todo) {
 		return (
 			<Todo key={ todo.id } id={ todo.id }> { todo.text }</Todo>
