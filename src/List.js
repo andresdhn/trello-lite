@@ -67,7 +67,7 @@ class List extends React.Component {
 						<input type="text" 
 							className="form-control" 
 							ref="listname" 
-							defaultValue="..." 
+							defaultValue={ this.props.name || "..." }
 							onBlur={ this.change } />
 					</div>
   				</div>
