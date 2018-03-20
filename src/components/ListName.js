@@ -7,10 +7,7 @@ class ListName extends React.Component {
 
 		this.state={
 			'editing': false
-		}
-
-		this.edit = this.edit.bind(this)
-		this.save = this.save.bind(this)		
+		}	
 	}
 
 	componentDidUpdate() {
@@ -36,7 +33,7 @@ class ListName extends React.Component {
 		return(
 			<button type="button" 
 				className="btn btn-light font-weight-bold"
-				onClick={ this.edit } >
+				onClick={ this.edit.bind(this) } >
 				{ this.props.name }
 			</button>
 		)
@@ -48,7 +45,7 @@ class ListName extends React.Component {
 				className="form-control" 
 				ref="listname" 
 				defaultValue={ this.props.name || "..." }
-				onBlur={ this.save } />
+				onBlur={ this.save.bind(this) } />
 		)
 	}
 

@@ -11,8 +11,6 @@ class Board extends React.Component {
 				{'id': 0, 'name':'...'}
 			]
 		}
-
-		this.addList = this.addList.bind(this)
 	}
 
 	nextId() {
@@ -46,7 +44,7 @@ class Board extends React.Component {
 						{ this.state.lists.map( this.renderList , this)}
 
 						<div className="col-2">
-							<button type="button" className="btn btn-outline-light btn-block" onClick={ this.addList }>Add list</button>
+							<button type="button" className="btn btn-outline-light btn-block" onClick={ this.addList.bind(this) }>Add list</button>
 						</div>
 					</div>
 				</div>
