@@ -21,8 +21,13 @@ class List extends React.Component {
 
 	addTodo() {
 		let newTodo = this.state.todos
-		newTodo.push({ 'id': this.nextId(), 'name': '...', 'completed': false })
+		newTodo.push({ 'id': this.nextId(), 'text': '...', 'completed': false })
 		this.setState({ newTodo })
+	}
+
+	updateTodo(id, newText) {
+		let todos = this.state.todos.map( todo => (todo.id !== id) ? todo : {'id': id, 'text': newText, 'completed': todo.completed })
+		this.setState({ todos })
 	}
 
 	renderAddTodoBtn() {
@@ -35,7 +40,11 @@ class List extends React.Component {
 	
 	renderTodos(todo) {
 		return (
-			<Todo key={ todo.id } id={ todo.id }>{ todo.name }</Todo>
+			<Todo key={ todo.id } 
+				id={ todo.id } 
+				onSave={ this.updateTodo.bind(this) }>
+					{ todo.text }
+			</Todo>
 		)
 	}
 

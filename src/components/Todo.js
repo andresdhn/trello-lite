@@ -6,7 +6,32 @@ class Todo extends React.Component {
 		super(props); 
 
 		this.state ={
-			'editing': false
+			'editing': true
+		}
+	}
+
+	componentDidMount() {
+		this.selectText()
+	}
+
+	componentDidUpdate() {
+		this.selectText()		
+	}
+
+
+	edit(){
+		this.setState({ 'editing': true })
+	}
+
+	save(){
+		this.props.onSave ( this.props.id, this.refs.todo.value )
+		this.setState({ 'editing': false })
+	}
+
+	selectText() {
+		if (this.state.editing) {
+			this.refs.todo.focus()
+			this.refs.todo.select()
 		}
 	}
 
@@ -14,14 +39,18 @@ class Todo extends React.Component {
 		return(
 			<input type="text" 
 				className="form-control" 
-				ref="todo" />
+				ref="todo" 
+				onBlur = { this.save.bind(this) }
+				defaultValue={ this.props.children }
+			/>
 		)
 	}
 
 	renderDisplay() {
 		return(
 			<a href="#" 
-				className="list-group-item list-group-item-action">
+				className="list-group-item list-group-item-action"
+				onClick={ this.edit.bind(this) }>
 				{ this.props.children }
 			</a>
 		)
